@@ -2,6 +2,11 @@ from django.db import models
 
 # Create your models here.
 
+
+class Category(models.Model):
+    title = models.CharField(max_length=50, verbose_name="Kategory nomi")
+
+
 class Product(models.Model):
     title = models.CharField(max_length=50, verbose_name="Tovar nomi", blank=False, null=False)
     description = models.TextField(verbose_name="Tovar haqida")
@@ -10,6 +15,7 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True)
     image = models.ImageField(upload_to="product_images/", blank=True, null=True)
     count = models.PositiveIntegerField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
 
