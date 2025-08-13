@@ -18,6 +18,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
-
+    def discount_price(self):
+        return float(self.price) * (1 - self.discount_precent /100)
 
 
